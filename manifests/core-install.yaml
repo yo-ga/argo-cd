@@ -481,6 +481,28 @@ spec:
                           commit, tag, or branch. If omitted, will equal to HEAD.
                           In case of Helm, this is a semver tag for the Chart's version.
                         type: string
+                      targetTracking:
+                        description: TargetTracking defines the strategy how the application
+                          track the new revision If the settings is existent, TargetRevision
+                          will be ignore.
+                        properties:
+                          allowTags:
+                            description: 'allowTags: [ <any>, <regex pattern>, ...
+                              ]'
+                            items:
+                              type: string
+                            type: array
+                          ignoreTags:
+                            description: ignoreTags
+                            items:
+                              type: string
+                            type: array
+                          updateStrategy:
+                            description: 'updateStrategy: [ semver, latest, name ]'
+                            type: string
+                        required:
+                        - updateStrategy
+                        type: object
                     required:
                     - repoURL
                     type: object
@@ -821,6 +843,29 @@ spec:
                             to HEAD. In case of Helm, this is a semver tag for the
                             Chart's version.
                           type: string
+                        targetTracking:
+                          description: TargetTracking defines the strategy how the
+                            application track the new revision If the settings is
+                            existent, TargetRevision will be ignore.
+                          properties:
+                            allowTags:
+                              description: 'allowTags: [ <any>, <regex pattern>, ...
+                                ]'
+                              items:
+                                type: string
+                              type: array
+                            ignoreTags:
+                              description: ignoreTags
+                              items:
+                                type: string
+                              type: array
+                            updateStrategy:
+                              description: 'updateStrategy: [ semver, latest, name
+                                ]'
+                              type: string
+                          required:
+                          - updateStrategy
+                          type: object
                       required:
                       - repoURL
                       type: object
@@ -1270,19 +1315,25 @@ spec:
                       this is a semver tag for the Chart's version.
                     type: string
                   targetTracking:
-                    description: TargetTracking is a reference to the strategy of
-                      source tracking
+                    description: TargetTracking defines the strategy how the application
+                      track the new revision If the settings is existent, TargetRevision
+                      will be ignore.
                     properties:
                       allowTags:
+                        description: 'allowTags: [ <any>, <regex pattern>, ... ]'
                         items:
                           type: string
                         type: array
                       ignoreTags:
+                        description: ignoreTags
                         items:
                           type: string
                         type: array
                       updateStrategy:
+                        description: 'updateStrategy: [ semver, latest, name ]'
                         type: string
+                    required:
+                    - updateStrategy
                     type: object
                 required:
                 - repoURL
@@ -1616,6 +1667,27 @@ spec:
                         tag, or branch. If omitted, will equal to HEAD. In case of
                         Helm, this is a semver tag for the Chart's version.
                       type: string
+                    targetTracking:
+                      description: TargetTracking defines the strategy how the application
+                        track the new revision If the settings is existent, TargetRevision
+                        will be ignore.
+                      properties:
+                        allowTags:
+                          description: 'allowTags: [ <any>, <regex pattern>, ... ]'
+                          items:
+                            type: string
+                          type: array
+                        ignoreTags:
+                          description: ignoreTags
+                          items:
+                            type: string
+                          type: array
+                        updateStrategy:
+                          description: 'updateStrategy: [ semver, latest, name ]'
+                          type: string
+                      required:
+                      - updateStrategy
+                      type: object
                   required:
                   - repoURL
                   type: object
@@ -2113,6 +2185,29 @@ spec:
                             to HEAD. In case of Helm, this is a semver tag for the
                             Chart's version.
                           type: string
+                        targetTracking:
+                          description: TargetTracking defines the strategy how the
+                            application track the new revision If the settings is
+                            existent, TargetRevision will be ignore.
+                          properties:
+                            allowTags:
+                              description: 'allowTags: [ <any>, <regex pattern>, ...
+                                ]'
+                              items:
+                                type: string
+                              type: array
+                            ignoreTags:
+                              description: ignoreTags
+                              items:
+                                type: string
+                              type: array
+                            updateStrategy:
+                              description: 'updateStrategy: [ semver, latest, name
+                                ]'
+                              type: string
+                          required:
+                          - updateStrategy
+                          type: object
                       required:
                       - repoURL
                       type: object
@@ -2459,6 +2554,29 @@ spec:
                               to HEAD. In case of Helm, this is a semver tag for the
                               Chart's version.
                             type: string
+                          targetTracking:
+                            description: TargetTracking defines the strategy how the
+                              application track the new revision If the settings is
+                              existent, TargetRevision will be ignore.
+                            properties:
+                              allowTags:
+                                description: 'allowTags: [ <any>, <regex pattern>,
+                                  ... ]'
+                                items:
+                                  type: string
+                                type: array
+                              ignoreTags:
+                                description: ignoreTags
+                                items:
+                                  type: string
+                                type: array
+                              updateStrategy:
+                                description: 'updateStrategy: [ semver, latest, name
+                                  ]'
+                                type: string
+                            required:
+                            - updateStrategy
+                            type: object
                         required:
                         - repoURL
                         type: object
@@ -2948,6 +3066,29 @@ spec:
                                   will equal to HEAD. In case of Helm, this is a semver
                                   tag for the Chart's version.
                                 type: string
+                              targetTracking:
+                                description: TargetTracking defines the strategy how
+                                  the application track the new revision If the settings
+                                  is existent, TargetRevision will be ignore.
+                                properties:
+                                  allowTags:
+                                    description: 'allowTags: [ <any>, <regex pattern>,
+                                      ... ]'
+                                    items:
+                                      type: string
+                                    type: array
+                                  ignoreTags:
+                                    description: ignoreTags
+                                    items:
+                                      type: string
+                                    type: array
+                                  updateStrategy:
+                                    description: 'updateStrategy: [ semver, latest,
+                                      name ]'
+                                    type: string
+                                required:
+                                - updateStrategy
+                                type: object
                             required:
                             - repoURL
                             type: object
@@ -3311,6 +3452,30 @@ spec:
                                     omitted, will equal to HEAD. In case of Helm,
                                     this is a semver tag for the Chart's version.
                                   type: string
+                                targetTracking:
+                                  description: TargetTracking defines the strategy
+                                    how the application track the new revision If
+                                    the settings is existent, TargetRevision will
+                                    be ignore.
+                                  properties:
+                                    allowTags:
+                                      description: 'allowTags: [ <any>, <regex pattern>,
+                                        ... ]'
+                                      items:
+                                        type: string
+                                      type: array
+                                    ignoreTags:
+                                      description: ignoreTags
+                                      items:
+                                        type: string
+                                      type: array
+                                    updateStrategy:
+                                      description: 'updateStrategy: [ semver, latest,
+                                        name ]'
+                                      type: string
+                                  required:
+                                  - updateStrategy
+                                  type: object
                               required:
                               - repoURL
                               type: object
@@ -3783,6 +3948,29 @@ spec:
                               to HEAD. In case of Helm, this is a semver tag for the
                               Chart's version.
                             type: string
+                          targetTracking:
+                            description: TargetTracking defines the strategy how the
+                              application track the new revision If the settings is
+                              existent, TargetRevision will be ignore.
+                            properties:
+                              allowTags:
+                                description: 'allowTags: [ <any>, <regex pattern>,
+                                  ... ]'
+                                items:
+                                  type: string
+                                type: array
+                              ignoreTags:
+                                description: ignoreTags
+                                items:
+                                  type: string
+                                type: array
+                              updateStrategy:
+                                description: 'updateStrategy: [ semver, latest, name
+                                  ]'
+                                type: string
+                            required:
+                            - updateStrategy
+                            type: object
                         required:
                         - repoURL
                         type: object
@@ -4138,6 +4326,29 @@ spec:
                                 will equal to HEAD. In case of Helm, this is a semver
                                 tag for the Chart's version.
                               type: string
+                            targetTracking:
+                              description: TargetTracking defines the strategy how
+                                the application track the new revision If the settings
+                                is existent, TargetRevision will be ignore.
+                              properties:
+                                allowTags:
+                                  description: 'allowTags: [ <any>, <regex pattern>,
+                                    ... ]'
+                                  items:
+                                    type: string
+                                  type: array
+                                ignoreTags:
+                                  description: ignoreTags
+                                  items:
+                                    type: string
+                                  type: array
+                                updateStrategy:
+                                  description: 'updateStrategy: [ semver, latest,
+                                    name ]'
+                                  type: string
+                              required:
+                              - updateStrategy
+                              type: object
                           required:
                           - repoURL
                           type: object
@@ -4634,6 +4845,29 @@ spec:
                               to HEAD. In case of Helm, this is a semver tag for the
                               Chart's version.
                             type: string
+                          targetTracking:
+                            description: TargetTracking defines the strategy how the
+                              application track the new revision If the settings is
+                              existent, TargetRevision will be ignore.
+                            properties:
+                              allowTags:
+                                description: 'allowTags: [ <any>, <regex pattern>,
+                                  ... ]'
+                                items:
+                                  type: string
+                                type: array
+                              ignoreTags:
+                                description: ignoreTags
+                                items:
+                                  type: string
+                                type: array
+                              updateStrategy:
+                                description: 'updateStrategy: [ semver, latest, name
+                                  ]'
+                                type: string
+                            required:
+                            - updateStrategy
+                            type: object
                         required:
                         - repoURL
                         type: object
@@ -4989,6 +5223,29 @@ spec:
                                 will equal to HEAD. In case of Helm, this is a semver
                                 tag for the Chart's version.
                               type: string
+                            targetTracking:
+                              description: TargetTracking defines the strategy how
+                                the application track the new revision If the settings
+                                is existent, TargetRevision will be ignore.
+                              properties:
+                                allowTags:
+                                  description: 'allowTags: [ <any>, <regex pattern>,
+                                    ... ]'
+                                  items:
+                                    type: string
+                                  type: array
+                                ignoreTags:
+                                  description: ignoreTags
+                                  items:
+                                    type: string
+                                  type: array
+                                updateStrategy:
+                                  description: 'updateStrategy: [ semver, latest,
+                                    name ]'
+                                  type: string
+                              required:
+                              - updateStrategy
+                              type: object
                           required:
                           - repoURL
                           type: object
@@ -5377,6 +5634,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -5593,6 +5865,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -5968,6 +6255,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -6184,6 +6486,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -6563,6 +6880,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -6779,6 +7111,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -7138,6 +7485,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -7354,6 +7716,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -7735,6 +8112,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -7951,6 +8343,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -8326,6 +8733,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -8542,6 +8964,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -8921,6 +9358,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -9137,6 +9589,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -9496,6 +9963,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -9712,6 +10194,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -10079,6 +10576,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -10295,6 +10807,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -10844,6 +11371,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -11060,6 +11602,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -11604,6 +12161,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -11820,6 +12392,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -12193,6 +12780,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -12409,6 +13011,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -12792,6 +13409,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -13008,6 +13640,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -13383,6 +14030,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -13599,6 +14261,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -13978,6 +14655,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -14194,6 +14886,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -14553,6 +15260,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -14769,6 +15491,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -15136,6 +15873,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -15352,6 +16104,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -15901,6 +16668,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -16117,6 +16899,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -16661,6 +17458,21 @@ spec:
                                                 type: string
                                               targetRevision:
                                                 type: string
+                                              targetTracking:
+                                                properties:
+                                                  allowTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  ignoreTags:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  updateStrategy:
+                                                    type: string
+                                                required:
+                                                - updateStrategy
+                                                type: object
                                             required:
                                             - repoURL
                                             type: object
@@ -16877,6 +17689,21 @@ spec:
                                                   type: string
                                                 targetRevision:
                                                   type: string
+                                                targetTracking:
+                                                  properties:
+                                                    allowTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    ignoreTags:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    updateStrategy:
+                                                      type: string
+                                                  required:
+                                                  - updateStrategy
+                                                  type: object
                                               required:
                                               - repoURL
                                               type: object
@@ -17254,6 +18081,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -17470,6 +18312,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -17836,6 +18693,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -18052,6 +18924,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -18601,6 +19488,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -18817,6 +19719,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -19361,6 +20278,21 @@ spec:
                                       type: string
                                     targetRevision:
                                       type: string
+                                    targetTracking:
+                                      properties:
+                                        allowTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        ignoreTags:
+                                          items:
+                                            type: string
+                                          type: array
+                                        updateStrategy:
+                                          type: string
+                                      required:
+                                      - updateStrategy
+                                      type: object
                                   required:
                                   - repoURL
                                   type: object
@@ -19577,6 +20509,21 @@ spec:
                                         type: string
                                       targetRevision:
                                         type: string
+                                      targetTracking:
+                                        properties:
+                                          allowTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          ignoreTags:
+                                            items:
+                                              type: string
+                                            type: array
+                                          updateStrategy:
+                                            type: string
+                                        required:
+                                        - updateStrategy
+                                        type: object
                                     required:
                                     - repoURL
                                     type: object
@@ -20025,6 +20972,21 @@ spec:
                             type: string
                           targetRevision:
                             type: string
+                          targetTracking:
+                            properties:
+                              allowTags:
+                                items:
+                                  type: string
+                                type: array
+                              ignoreTags:
+                                items:
+                                  type: string
+                                type: array
+                              updateStrategy:
+                                type: string
+                            required:
+                            - updateStrategy
+                            type: object
                         required:
                         - repoURL
                         type: object
@@ -20241,6 +21203,21 @@ spec:
                               type: string
                             targetRevision:
                               type: string
+                            targetTracking:
+                              properties:
+                                allowTags:
+                                  items:
+                                    type: string
+                                  type: array
+                                ignoreTags:
+                                  items:
+                                    type: string
+                                  type: array
+                                updateStrategy:
+                                  type: string
+                              required:
+                              - updateStrategy
+                              type: object
                           required:
                           - repoURL
                           type: object

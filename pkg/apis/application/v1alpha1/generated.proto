@@ -425,6 +425,10 @@ message ApplicationSource {
 
   // Ref is reference to another source within sources field. This field will not be used if used with a `source` tag.
   optional string ref = 13;
+
+  // TargetTracking defines the strategy how the application track the new revision
+  // If the settings is existent, TargetRevision will be ignore.
+  optional ApplicationSourceTargetTracking targetTracking = 14;
 }
 
 // ApplicationSourceDirectory holds options for applications of type plain YAML or Jsonnet
@@ -555,6 +559,17 @@ message ApplicationSourcePluginParameter {
 
   // Array is the value of an array type parameter.
   optional OptionalArray array = 4;
+}
+
+message ApplicationSourceTargetTracking {
+  // updateStrategy: [ semver, latest, name ]
+  optional string updateStrategy = 1;
+
+  // allowTags: [ <any>, <regex pattern>, ... ]
+  repeated string allowTags = 2;
+
+  // ignoreTags
+  repeated string ignoreTags = 3;
 }
 
 // ApplicationSpec represents desired application state. Contains link to repository with application definition and additional parameters link definition revision.

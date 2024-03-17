@@ -190,7 +190,7 @@ type ApplicationSource struct {
 	Ref string `json:"ref,omitempty" protobuf:"bytes,13,opt,name=ref"`
 	// TargetTracking defines the strategy how the application track the new revision
 	// If the settings is existent, TargetRevision will be ignore.
-	TargetTracking *ApplicationSourceTargetTracking `json:"targetTracking" protobuf:"bytes,14,opt,name=targetTracking"`
+	TargetTracking *ApplicationSourceTargetTracking `json:"targetTracking,omitempty" protobuf:"bytes,14,opt,name=targetTracking"`
 }
 
 type ApplicationSourceTargetTracking struct {
@@ -200,6 +200,13 @@ type ApplicationSourceTargetTracking struct {
 	AllowTags []string `json:"allowTags,omitempty" protobuf:"bytes,2,opt,name=allowTags"`
 	// ignoreTags
 	IgnoreTags []string `json:"ignoreTags,omitempty" protobuf:"bytes,3,opt,name=ignoreTags"`
+}
+
+func (t *ApplicationSourceTargetTracking) IsZero() bool {
+	return t == nil ||
+		t.UpdateStrategy == "" &&
+			len(t.AllowTags) == 0 &&
+			len(t.IgnoreTags) == 0
 }
 
 // ApplicationSources contains list of required information about the sources of an application
@@ -279,6 +286,7 @@ func (a *ApplicationSource) IsZero() bool {
 		a.RepoURL == "" &&
 			a.Path == "" &&
 			a.TargetRevision == "" &&
+			a.TargetTracking.IsZero() &&
 			a.Helm.IsZero() &&
 			a.Kustomize.IsZero() &&
 			a.Directory.IsZero() &&
