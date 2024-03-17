@@ -188,6 +188,18 @@ type ApplicationSource struct {
 	Chart string `json:"chart,omitempty" protobuf:"bytes,12,opt,name=chart"`
 	// Ref is reference to another source within sources field. This field will not be used if used with a `source` tag.
 	Ref string `json:"ref,omitempty" protobuf:"bytes,13,opt,name=ref"`
+	// TargetTracking defines the strategy how the application track the new revision
+	// If the settings is existent, TargetRevision will be ignore.
+	TargetTracking *ApplicationSourceTargetTracking `json:"targetTracking" protobuf:"bytes,14,opt,name=targetTracking"`
+}
+
+type ApplicationSourceTargetTracking struct {
+	// updateStrategy: [ semver, latest, name ]
+	UpdateStrategy string `json:"updateStrategy" protobuf:"bytes,1,opt,name=updateStrategy"`
+	// allowTags: [ <any>, <regex pattern>, ... ]
+	AllowTags []string `json:"allowTags,omitempty" protobuf:"bytes,2,opt,name=allowTags"`
+	// ignoreTags
+	IgnoreTags []string `json:"ignoreTags,omitempty" protobuf:"bytes,3,opt,name=ignoreTags"`
 }
 
 // ApplicationSources contains list of required information about the sources of an application
